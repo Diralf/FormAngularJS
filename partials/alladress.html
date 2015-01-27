@@ -1,0 +1,24 @@
+<div class="container" ng-init="setTab(2)">
+    <div ng-hide="addressList[0]" class="alert alert-info" ><h4>Address book empty</h4></div>
+    <table ng-show="addressList[0]" class="table  table-condensed table-hover">
+        <caption><h1>Address list</h1></caption>
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="address in addressList">
+                <td>{{address.firstName}}</td>
+                <td>{{address.lastName}}</td>
+                <td>{{address.phone}}</td>
+                <td>{{address.address}}</td>
+                <td>{{address.notes}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

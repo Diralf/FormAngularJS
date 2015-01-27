@@ -1,0 +1,63 @@
+<div class="container" ng-init="setTab(1)">
+    <div>
+        <form name="formAddress" class="form-horizontal" ng-submit="formAddress.$valid && addAddress()" novalidate>
+            <div class="control-group">
+                <label class="control-label" for="inputFirst">First name *</label>
+                <div class="controls">
+                    <input name="inputFirst" ng-model="newAddress.firstName" type="text" id="inputFirst" required />
+                    <span class="label label-important" ng-show="formAddress.inputFirst.$error.required
+                                    && (formAddress.inputFirst.$dirty || formAddress.$submitted)">
+                        Required!
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputLast">Last name</label>
+                <div class="controls">
+                    <input name="inputLast" ng-model="newAddress.lastName" type="text" id="inputLast"/>
+                </div>
+            </div>
+            <div class="control-group" >
+                <label class="control-label" for="inputPhone">Phone *</label>
+                <div class="controls">
+                    <input name="inputPhone" ng-model="newAddress.phone" type="text" id="inputPhone" ng-pattern="/^([+]\d{2})?\d[-]?\d{2}[-]?\d{3}[-]?\d{2}[-]?\d{2}$/" placeholder="029-003-02-02" required/>
+                    <span class="label label-success" ng-show="formAddress.inputPhone.$valid
+                                    && formAddress.inputPhone.$dirty">
+                        Valid!
+                    </span>
+                    <span class="label label-warning" ng-show="formAddress.inputPhone.$error.pattern
+                                    && formAddress.inputPhone.$dirty ">
+                        Invalid phone number
+                    </span>
+                    
+                    <span class="label label-important" ng-show="formAddress.inputPhone.$error.required
+                                    && (formAddress.inputPhone.$dirty || formAddress.$submitted)">
+                        Required!
+                    </span>
+                </div>
+
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputAddress">Address *</label>
+                <div class="controls">
+                    <input name="inputAddress" ng-model="newAddress.address" type="text" id="inputAddress" required />
+                    <span class="label label-important" ng-show="formAddress.inputAddress.$error.required
+                                    && (formAddress.inputAddress.$dirty || formAddress.$submitted)">
+                        Required!
+                    </span>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="inputNotes">Notes</label>
+                <div class="controls">
+                    <textarea ng-model="newAddress.notes" id="inputNotes"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

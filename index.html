@@ -1,110 +1,25 @@
 <!DOCTYPE html>
-<html ng-app="form">
+<html>
     <head>
+        <title>Form, ui rounting and Rock'n'roll</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" />
         <script src="assets/js/angular.min.js"></script>
+        <script src="assets/js/angular-ui-router.min.js"></script>
         <script type="text/javascript" src="app/app.js"></script>
+        <script type="text/javascript" src="app/navbarController.js"></script>
     </head>
-    <body ng-controller="resultController as result">
-        <header>
-            <h1 class="text-center">Epic Title!</h1>
-        </header>
-        <div class="container">
-            <div class="row" ng-controller="reviewController as review">
-                <div class="span7 pull-left">
-                    <form class="form-horizontal" ng-submit="review.sendForm(result)">
-                        <div class="control-group">
-                            <label class="control-label" for="inputLogin">Login</label>
-                            <div class="controls">
-                                <input ng-model="review.view.login" type="text" id="inputLogin" placeholder="Login">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="inputEmail">Email</label>
-                            <div class="controls">
-                                <input ng-model="review.view.email" type="email" id="inputEmail" placeholder="form-angular@example.com" required>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="inputPassword">Password</label>
-                            <div class="controls">
-                                <input ng-model="review.view.password" type="password" id="inputPassword" placeholder="password" required>
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" for="inputInfo">More info</label>
-                            <div class="controls">
-                                <input ng-model="review.view.info" type="text" id="inputInfo">
-                            </div>
-                        </div>
-                        <div class="control-group">
-                            <div class="controls">
-                                <button type="submit" class="btn btn-success">Submit form</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="span4 alert alert-success" ng-show="result.request">
-                    <div class="row">
-                        <div class="span1">
-                            <strong class="pull-right">Login: </strong>
-                        </div>
-                        <div class="span3">
-                            <p>{{result.request.login}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="span1">
-                            <strong class="pull-right">Email: </strong>
-                        </div>
-                        <div class="span3">
-                            <p>{{result.request.email}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="span1">
-                            <strong class="pull-right">Password: </strong>
-                        </div>
-                        <div class="span3">
-                            <p>{{result.request.password}}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="span1">
-                            <strong class="pull-right">Info: </strong>
-                        </div>
-                        <div class="span3">
-                            <p>{{result.request.info}}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="span4">
-                    <div ng-show="review.view.login">
-                        <strong>Login:</strong>
-                        <div class="alert alert-info">
-                            <p>{{review.view.login}}</p>
-                        </div>
-                    </div>
-                    <div ng-show="review.view.email">
-                        <strong>Email:</strong>
-                        <div class="alert alert-info">
-                            <p>{{review.view.email}}</p>
-                        </div>
-                    </div>
-                    <div ng-show="review.view.password">
-                        <strong>Password:</strong>
-                        <div class="alert alert-info">
-                            <p>{{review.view.password}}</p>
-                        </div>
-                    </div>
-                    <div ng-show="review.view.info">
-                        <strong>More Info:</strong>
-                        <div class="alert alert-info">
-                            <p>{{review.view.info}}</p>
-                        </div>
-                    </div>
-                </div>
+    <body ng-app="form" ng-controller="navbarController">
+        <div class="navbar">
+            <div class="navbar-inner" >
+                <span class="brand">Address book</span>
+                <ul class="nav">
+                    <li ng-class="{ active: isSet(1) }"><a ui-sref="stateNew">New address</a></li>
+                    <li ng-class="{ active: isSet(2) }"><a ui-sref="stateAll">Show all</a></li>
+                </ul>
             </div>
         </div>
+        <div ui-view></div>
     </body>
 </html>
